@@ -41,8 +41,10 @@ cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=
 
 cfg$gms$c_timesteps <- "12" #12: 1995, 2000, then 10-year steps; 5year: 5-year steps; MAgPIE default: coup2100
 
-
 res_v <- c("c2") #c2, c4; cluster resolution, default: c2=200 clusters
+
+
+cfg$gms$tc <- "exo_jan22"
 
 
 ### Bioenergy
@@ -89,7 +91,7 @@ for (res in res_v) {
        cfg$gms$s56_ghgprice_target <- US00_05  * GHG
 
        #Title and folder
-       title <- paste0(today,"BE",str_pad(BE, 2, pad = "0"),"GHG",str_pad(GHG, 4, pad = "0"))
+       title <- paste0(today,"BE",str_pad(BE, 2, pad = "0"),"GHG",str_pad(GHG, 4, pad = "0"),"ex")
        cfg$title <- title
        cfg$results_folder = "output/:title:"
 
@@ -99,7 +101,7 @@ for (res in res_v) {
 
        start_run(cfg,codeCheck=FALSE)
 
-       print(paste0(Sys.time(), ": Finished ", title, "; Started at: ",timeStart, "; Runtime: ", round(difftime(Sys.time(), timeStart, units = "mins"),digits = 0)," minutes; CO2: ", US00_05  * GHG, " US$05/t; BE: ", US00_05 * BE, " US$05/t"))
+       print(paste0(Sys.time(), ": Finished ", title, "; Started at: ",timeStart, "; Runtime: ", round(difftime(Sys.time(), timeStart, units = "mins"),digits = 0)," minutes; CO2: ", US00_05  * GHG, " US$05/t CO2eq; BE: ", US00_05 * BE, " US$05/GJ"))
        write(paste(format(timeStart,format="%Y/%m/%d"),format(timeStart,format="%H:%M"),format(Sys.time(),format="%Y/%m/%d"),format(Sys.time(),format="%H:%M"),round(difftime(Sys.time(), timeStart, units = "mins"),digits = 0),BE,GHG,sep = ";"), file="runlog.csv", append = TRUE)
 
        } # close GHG
