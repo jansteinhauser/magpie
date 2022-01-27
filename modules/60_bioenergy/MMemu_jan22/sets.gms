@@ -81,7 +81,7 @@ sets
         / betr, begr, oils, ethanol/        
    
     scen1st60 first generation bioenergy scenarios
-       / off, BE00 /
+       / off /
 
     scen2ndres60 residues for second generation bioenergy scenarios
        / ssp1, ssp2, ssp3, ssp4, ssp5, sdp, off /

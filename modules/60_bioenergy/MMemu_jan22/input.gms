@@ -35,7 +35,7 @@ sets
 
 scalars
   c60_biodem_level  bioenergy demand level indicator 1 for regional and 0 for global demand   (1)   / 1 /
-  c60_bioenergy_subsidy first generation bioenergy subsidy (USD05MER per GJ) / 300 /
+  c60_bioenergy_subsidy first generation bioenergy subsidy (USD05MER per GJ) / 50.3865 /
 ;
 
 $setglobal c60_2ndgen_biodem  off
@@ -62,6 +62,6 @@ $setglobal c60_1stgen_biodem  off
 
 table f60_1stgen_bioenergy_dem_acc(t_all,i,scen1st60) annual 1st generation bioenergy demand accumulated (mio. GJ per yr)
 $ondelim
-$include "./modules/60_bioenergy/input/f60_1stgen_bioenergy_dem_acc.cs3"
+$include "./modules/60_bioenergy/MMemu_jan22/input/f60_1stgen_bioenergy_dem_acc.cs3"
 $offdelim
 ;
