@@ -32,10 +32,3 @@ Rplots.pdf
 
 #ignore GAMS license
 gamslice.txt
-.Rproj.user
-
-magpie.Rproj
-
-.RData
-
-*.bak
