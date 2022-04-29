@@ -19,6 +19,8 @@ magpie_calib.*
 
 #ignore R support files
 .Rhistory
+.Rproj.user
+*.Rproj
 
 #ignore documentation folder
 /doc/
