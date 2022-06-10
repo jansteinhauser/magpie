@@ -147,18 +147,18 @@ $title magpie
 *##################### R SECTION START (VERSION INFO) ##########################
 * 
 * Used data set: rev4.68_h12_magpie.tgz
-* md5sum: 58572b01837e5365551a9a0c7a7a3cc1
+* md5sum: NA
 * Repository: https://rse.pik-potsdam.de/data/magpie/public
 * 
 * Used data set: rev4.68_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz
-* md5sum: 02748bdd8b4be12d42b9ae2320471a52
+* md5sum: NA
 * Repository: https://rse.pik-potsdam.de/data/magpie/public
 * 
 * Used data set: rev4.68_h12_validation.tgz
-* md5sum: 5e011b00267ff48b506af4bdffe3b8dc
+* md5sum: NA
 * Repository: https://rse.pik-potsdam.de/data/magpie/public
 * 
-* Used data set: additional_data_rev4.08.tgz
+* Used data set: additional_data_rev4.10.tgz
 * md5sum: NA
 * Repository: https://rse.pik-potsdam.de/data/magpie/public
 * 
@@ -187,10 +187,10 @@ $title magpie
 * * Input resolution: 0.5
 * * Output resolution: c200
 * * Regionscode: 62eff8f7
-* * Call: force(code)
+* * Call: withCallingHandlers(expr, message = messageHandler, warning = warningHandler,     error = errorHandler)
 * 
 * 
-* Last modification (input data): Tue Mar 08 10:39:53 2022
+* Last modification (input data): Tue May 10 19:36:14 2022
 * 
 *###################### R SECTION END (VERSION INFO) ###########################
 
@@ -216,7 +216,7 @@ $offlisting
 
 $setglobal c_timesteps  coup2100
 $setglobal c_past  till_2010
-$setglobal c_title  default
+$setglobal c_title  BE10af0.02-2
 
 scalars
 s_use_gdx   use of gdx files                                       / 2 /
@@ -229,7 +229,7 @@ $setglobal drivers  aug17
 $setglobal land  landmatrix_dec18
 $setglobal costs  default
 $setglobal interest_rate  select_apr20
-$setglobal tc  endo_jan22
+$setglobal tc  endo_apr22
 $setglobal yields  managementcalib_aug19
 
 $setglobal food  anthropometrics_jan18
@@ -273,7 +273,7 @@ $setglobal maccs  on_sep16
 $setglobal peatland  on
 $setglobal som  static_jan19
 
-$setglobal bioenergy  1stgen_priced_dec18
+$setglobal bioenergy  2ndgen_linear_may22
 $setglobal material  exo_flexreg_apr16
 $setglobal livestock  fbask_jan16
 
