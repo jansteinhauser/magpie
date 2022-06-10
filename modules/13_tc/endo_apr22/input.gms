@@ -8,7 +8,11 @@
 
 scalars
  s13_ignore_tau_historical	ignore historical tau (1) or use it as lower bound (0) (binary) / 1 /
- s13_max_gdp_shr Maximum tech cost as share of regional GDP / 1 /
+ s13_max_gdp_shr Maximum tech cost as share of regional GDP (1) / 0.002 /
+ s13_adj_factor Adjustment cost factor for TC Cost capacity expansion (1) / 0.02 /
+ s13_adj_exp Adjustment cost factor exponent (1) / 2 /
+ s13_tech_cost_min Tech cost lower bound (mio. US$2005 per year) / 0.01 /
+ c13_capacity_cost Switch to turn additional capacity building cost on (1) or off (0) (binary) / 1 /
 ;
 
 parameter fm_tau1995(h) Agricultural land use intensity tau in 1995 (1)
@@ -50,3 +54,10 @@ $ondelim
 $include "./modules/13_tc/input/f13_pastr_tau_hist.csv"
 $offdelim
 ;
+
+parameter f13_tc_cost1995(i) Tech change cost in 1995 (mio US$05 PPP)
+/
+$ondelim
+$include "./modules/13_tc/input/f13_tc_cost1995.cs4"
+$offdelim
+/;

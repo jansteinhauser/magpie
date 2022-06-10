@@ -10,11 +10,13 @@ positive variable
  vm_tech_cost(i)                     Total Annuitized costs of TC (mio. USD05PPP per yr)
  v13_cost_tc(i,tautype)              Technical change costs per region (mio. USD05PPP)
  v13_tech_cost(i,tautype)            Annuitized costs of TC for crops and pasture (mio. USD05PPP per yr)
+ v13_cost_capa_exp(i)        Annuitized expansion of TC cost capacity (mio. USD05PPP per yr)
 ;
 
 equations
  q13_tech_cost(i, tautype)            Total annuitized costs for TC (mio. USD05PPP)
  q13_cost_tc(i, tautype)              Costs for TC (mio. USD05PPP per yr)
+ q13_cost_capa(i)                     Cost capacity expansion for TC (mio. USD05PPP per yr)
  q13_tech_cost_sum(i)                 Total Total annuitized costs for TC (mio. USD05PPP per yr)
 ;
 
@@ -24,6 +26,7 @@ parameters
  pc13_tcguess(h, tautype)             Guess for annual tc rates in the next time step (1)
  i13_tc_factor(t)                     Regression factor (USD05PPP per ha)
  i13_tc_exponent(t)                   Regression exponent (1)
+ pc13_cost_capa(i)                    Annuitized TC cost capacity of previous time step (mio. US$05PPP per yr.)
 ;
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################
@@ -32,8 +35,10 @@ parameters
  ov_tech_cost(t,i,type)           Total Annuitized costs of TC (mio. USD05PPP per yr)
  ov13_cost_tc(t,i,tautype,type)   Technical change costs per region (mio. USD05PPP)
  ov13_tech_cost(t,i,tautype,type) Annuitized costs of TC for crops and pasture (mio. USD05PPP per yr)
+ ov13_cost_capa_exp(t,i,type)     Annuitized expansion of TC cost capacity (mio. USD05PPP per yr)
  oq13_tech_cost(t,i,tautype,type) Total annuitized costs for TC (mio. USD05PPP)
  oq13_cost_tc(t,i,tautype,type)   Costs for TC (mio. USD05PPP per yr)
+ oq13_cost_capa(t,i,type)         Cost capacity expansion for TC (mio. USD05PPP per yr)
  oq13_tech_cost_sum(t,i,type)     Total Total annuitized costs for TC (mio. USD05PPP per yr)
 ;
 *##################### R SECTION END (OUTPUT DECLARATIONS) #####################
