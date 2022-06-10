@@ -11,6 +11,9 @@ v60_2ndgen_bioenergy_dem_dedicated.up(i,kbe60) = Inf;
 v60_2ndgen_bioenergy_dem_residues.fx(i,kall) = 0;
 v60_2ndgen_bioenergy_dem_residues.up(i,kres) = Inf;
 
+
+
+
 if(m_year(t) <= sm_fix_SSP2,
  i60_1stgen_bioenergy_dem(t,i,kall) =
              f60_1stgen_bioenergy_dem(t,i,"const2020",kall);
@@ -25,3 +28,18 @@ else
 
 * Add minimal bioenergy demand in case of zero demand or very small demand to avoid zero prices
 i60_bioenergy_dem(t,i)$(i60_bioenergy_dem(t,i) < s60_2ndgen_bioenergy_dem_min) = s60_2ndgen_bioenergy_dem_min;
+
+* implement the 2nd gen bioenergy subsidy between 2020 and 2100
+if(m_year(t) <= 2020,
+    i60_2ndgen_bioenergy_subsidy(t) = 0;
+    
+elseif (m_year(t) > 2020) and (m_year(t) < 2100),
+* linearly
+     i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_bioenergy_subsidy/(2100-2020) * (m_year(t) - 2020)
+* exponentionally
+*    i60_2ndgen_bioenergy_subsidy(t) = 0.1 * (((c60_2ndgen_bioenergy_subsidy/0.1) ** (1/(2100-2020))) ** (m_year(t) - 2020))
+* from external run    
+*   i60_2ndgen_bioenergy_subsidy(t) = f60_2ndgen_bioenergy_subsidy(t)
+    
+else i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_bioenergy_subsidy
+);

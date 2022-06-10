@@ -36,6 +36,7 @@ sets
 scalars
   c60_biodem_level  bioenergy demand level indicator 1 for regional and 0 for global demand   (1)   / 1 /
   c60_bioenergy_subsidy first generation bioenergy subsidy (USD05MER per ton) / 300 /
+  c60_2ndgen_bioenergy_subsidy second generation bioenergy subsidy (USD05MER per GJ) / 10 /
   s60_2ndgen_bioenergy_dem_min Minimum dedicated 2nd generation bioenergy demand assumed in each region (mio. GJ per yr) / 1 /
 ;
 
@@ -81,3 +82,27 @@ $ondelim
 $include "./modules/60_bioenergy/input/f60_1stgen_bioenergy_dem.cs3"
 $offdelim
 ;
+
+parameter f60_2ndgen_bioenergy_subsidy(t_all) 2nd gen subsidy from external run
+/
+y2020    3.367745525
+y2025    6.73549105
+y2030    5.746174126
+y2035    8.645411192
+y2040    12.69879021
+y2045    12.46886758
+y2050    14.3517124
+y2055    15.56808859
+y2060    26.51129535
+y2065    17.62193604
+y2070    8.732576736
+y2075    8.128030885
+y2080    7.523485033
+y2085    7.749851637
+y2090    7.976218242
+y2095    8.471899013
+y2100    8.967579785
+
+
+/
+
