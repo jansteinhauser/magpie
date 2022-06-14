@@ -11,6 +11,7 @@ positive variable
  v13_cost_tc(i,tautype)              Technical change costs per region (mio. USD05PPP)
  v13_tech_cost(i,tautype)            Annuitized costs of TC for crops and pasture (mio. USD05PPP per yr)
  v13_cost_capa_exp(i)        Annuitized expansion of TC cost capacity (mio. USD05PPP per yr)
+ v13_tech_cost_glo                  Annuitized global costs of TC (mio. USD05PPP per yr)
 ;
 
 equations
@@ -18,6 +19,7 @@ equations
  q13_cost_tc(i, tautype)              Costs for TC (mio. USD05PPP per yr)
  q13_cost_capa(i)                     Cost capacity expansion for TC (mio. USD05PPP per yr)
  q13_tech_cost_sum(i)                 Total Total annuitized costs for TC (mio. USD05PPP per yr)
+ q13_tech_cost_sum_glo                Global total total annuitized costs for TC (mio. USD05PPP per yr)
 ;
 
 parameters
@@ -36,9 +38,11 @@ parameters
  ov13_cost_tc(t,i,tautype,type)   Technical change costs per region (mio. USD05PPP)
  ov13_tech_cost(t,i,tautype,type) Annuitized costs of TC for crops and pasture (mio. USD05PPP per yr)
  ov13_cost_capa_exp(t,i,type)     Annuitized expansion of TC cost capacity (mio. USD05PPP per yr)
+ ov13_tech_cost_glo(t,type)       Annuitized global costs of TC (mio. USD05PPP per yr)
  oq13_tech_cost(t,i,tautype,type) Total annuitized costs for TC (mio. USD05PPP)
  oq13_cost_tc(t,i,tautype,type)   Costs for TC (mio. USD05PPP per yr)
  oq13_cost_capa(t,i,type)         Cost capacity expansion for TC (mio. USD05PPP per yr)
  oq13_tech_cost_sum(t,i,type)     Total Total annuitized costs for TC (mio. USD05PPP per yr)
+ oq13_tech_cost_sum_glo(t,type)   Global total total annuitized costs for TC (mio. USD05PPP per yr)
 ;
 *##################### R SECTION END (OUTPUT DECLARATIONS) #####################

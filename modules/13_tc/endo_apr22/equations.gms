@@ -43,6 +43,8 @@ q13_tech_cost(i2, tautype) ..
 q13_cost_capa(i2) ..
  v13_cost_capa_exp(i2) =g= sum(tautype,v13_tech_cost(i2,tautype)) - pc13_cost_capa(i2);
 
-
 q13_tech_cost_sum(i2) ..
  vm_tech_cost(i2) =e= sum(tautype, v13_tech_cost(i2, tautype)) + ((v13_cost_capa_exp(i2) * s13_adj_factor) ** s13_adj_exp) * c13_capacity_cost;
+
+ q13_tech_cost_sum_glo ..
+  v13_tech_cost_glo =e= sum(i2,vm_tech_cost(i2));
