@@ -32,7 +32,7 @@ cfg = setScenario(cfg,c(ssp)) #load config presets
 cfg$output <- c("output_check", "rds_report")
 
 today <- format(Sys.Date(),format="%y%m%d")
-identifier_flag = "_glo"
+identifier_flag = "G"
 
 cfg$sequential <- FALSE
 
@@ -51,9 +51,9 @@ cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=
 
 ###TC
 #cfg$gms$tc <- "endo_apr22"
-cfg$gms$c13_tccost <- "medium"
+#cfg$gms$c13_tccost <- "medium"
 
-cfg$gms$c13_capacity_cost <- 0
+#cfg$gms$c13_capacity_cost <- 0
 cfg$gms$s13_adj_factor <- 0.01
 cfg$gms$s13_adj_exp <- 2
 cfg$gms$s13_tech_cost_min <- 0.01
@@ -66,6 +66,8 @@ cfg$gms$c60_2ndgen_biodem <- "off"
 cfg$gms$c60_res_2ndgenBE_dem <- "off"
 
 TC_v <- c('en')
+TCC_v <-c('medium','high')
+AF_v <-c(1,0)
 
 BE_v <- c(60)#,6,7,8,9,10)
 
@@ -84,7 +86,7 @@ PA_v <-c('npi')
 
 
 ###Biodiversity
-BD_v <-c(0,70,74,76,78)#,70,74,76,78)
+BD_v <-c(0,78)#,70,74,76,78)
 
 #cfg$gms$biodiversity <- "bv_btc_mar21"
 cfg$gms$biodiversity <- "bii_target"
@@ -92,7 +94,6 @@ cfg$gms$biodiversity <- "bii_target"
 #cfg$gms$s44_target_year <- 2050
 
 #cfg$gms$s44_start_price <- 0	#def = 0
-
 
 US00_05 <- 1.1197 #1.1197 #src: https://data.worldbank.org/indicator/NY.GDP.DEFL.ZS?end=2005&locations=US&start=2000
 
@@ -120,23 +121,46 @@ for (BE in BE_v) {
            BII_lo <- BD / 100
            cfg$gms$s44_bii_lower_bound <- BII_lo
 
-           BD_flag <- paste0('BI',str_pad(BD,3,pad='0'))
-#          BD_flag <- if (BD != '0') paste0('BD',str_pad(BD,6,pad='0')) else ""
+           BD_flag <- paste0('B',str_pad(BD,2,pad='0'))
+#          BD_flag <- if (BD != '0') paste0('B',str_pad(BD,6,pad='0')) else ""
 
          for (TC in TC_v){
 
-           TC_flag <- TC
+           TC_flag <- if (TC == 'en') "n" else 'x'
            cfg$gms$tc <- if (TC == 'en') "endo_apr22" else 'exo'
 
+           if (TC == 'ex'){
              #Title and folder
-             title <- paste0("B",str_pad(BE, 2, pad = "0"),"G",str_pad(GHG, 4, pad = "0"),BD_flag,PA_flag,"_",TC_flag,identifier_flag)
+             title <- paste0("E",str_pad(BE, 2, pad = "0"),"G",str_pad(GHG, 4, pad = "0"),BD_flag,PA_flag,TC_flag,identifier_flag)
              cfg$title <- title
              cfg$results_folder = "output/:title:"
              ### Start run ###
              timeStart <- Sys.time()
              print(paste0(timeStart, ": Start ", title))
-
              start_run(cfg,codeCheck=FALSE)
+             }
+           else{
+             for (TCC in TCC_v){
+
+                cfg$gms$c13_tccost <- TCC
+                TCC_flag <- substr(TCC,1,1)
+
+               for (AF in AF_v) {
+                  cfg$gms$c13_capacity_cost <- AF
+                  AF_flag <- if (AF == 1) "A" else ""
+
+                  #Title and folder
+                  title <- paste0("E",str_pad(BE, 2, pad = "0"),"G",str_pad(GHG, 4, pad = "0"),BD_flag,PA_flag,TC_flag,TCC_flag,AF_flag,identifier_flag)
+                  cfg$title <- title
+                  cfg$results_folder = "output/:title:"
+                  ### Start run ###
+                  timeStart <- Sys.time()
+                  print(paste0(timeStart, ": Start ", title))
+                  start_run(cfg,codeCheck=FALSE)
+               }
+             }
+           } # close if/else TC
+
 
     #             print(paste0(Sys.time(), ": Finished ", title, "; Started at: ",timeStart, "; Runtime: ", round(difftime(Sys.time(), timeStart, units = "mins"),digits = 0)," minutes; CO2: ", US00_05  * GHG, " US$05/t CO2eq; BE: ", US00_05 * BE, " US$05/GJ"))
     #             write(paste(format(timeStart,format="%Y/%m/%d"),format(timeStart,format="%H:%M"),format(Sys.time(),format="%Y/%m/%d"),format(Sys.time(),format="%H:%M"),round(difftime(Sys.time(), timeStart, units = "mins"),digits = 0),BE,GHG,"en",sep = ";"), file="runlog.csv", append = TRUE)
