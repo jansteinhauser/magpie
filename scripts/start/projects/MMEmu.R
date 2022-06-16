@@ -88,16 +88,19 @@ US00_05 <- 1.1197 #1.1197 #src: https://data.worldbank.org/indicator/NY.GDP.DEFL
 ### TC
 TC_v <- c('en')
 TCC_v <-c('medium')
-AF_v <-c(1)
+CC_v <-c(1)
+AF_v <-c(0.01,0.02,0.04) #cfg$gms$s13_adj_factor
+TCCM_v <-c(0.002,0.0015,0.001) #cfg$gms$s13_max_gdp_shr
+
 ### Bioenergy
-BE_v <- c(6,7,8,9,10,15,30,60)
+BE_v <- c(60)
 ### Biodiversity
 BD_v <-c(0)#,70,74,76,78)
 PA_v <-c('npi')
 
 identifier_flag = "G"
 
-cfg$info$DevelopState <- "2022-06-15"
+cfg$info$flag <- "TC Adjustment factor & GDP share sensitivity"
 
 for (BE in BE_v) {
 
@@ -144,22 +147,36 @@ for (BE in BE_v) {
              for (TCC in TCC_v){
 
                 cfg$gms$c13_tccost <- TCC
-                TCC_flag <- substr(TCC,1,1)
 
-               for (AF in AF_v) {
-                  cfg$gms$c13_capacity_cost <- AF
-                  AF_flag <- if (AF == 1) "A" else ""
 
-                  #Title and folder
-                  title <- paste0("E",str_pad(BE, 2, pad = "0"),"G",str_pad(GHG, 4, pad = "0"),BD_flag,PA_flag,TC_flag,TCC_flag,AF_flag,identifier_flag)
-                  cfg$title <- title
-                  cfg$results_folder = "output/:title:"
-                  ### Start run ###
-                  timeStart <- Sys.time()
-                  print(paste0(timeStart, ": Start ", title))
-                  start_run(cfg,codeCheck=FALSE)
-               }
-             }
+               for (CC in CC_v) {
+                  cfg$gms$c13_capacity_cost <- CC
+
+                  for (TCCM in TCCM_v){
+
+                    cfg$gms$s13_max_gdp_shr <- TCCM
+
+                    TCC_flag <- paste0(substr(TCC,1,1),as.character(TCCM*1000))
+
+                    for (AF in AF_v){
+
+                      cfg$gms$cfg$gms$s13_adj_factor <- AF
+
+                      AF_flag <- if (CC == 1) paste0("A",as.character(AF*100)) else ""
+
+                      #Title and folder
+                      title <- paste0("E",str_pad(BE, 2, pad = "0"),"G",str_pad(GHG, 4, pad = "0"),BD_flag,PA_flag,TC_flag,TCC_flag,AF_flag,identifier_flag)
+                      cfg$title <- title
+                      cfg$results_folder = "output/:title:"
+                      ### Start run ###
+                      timeStart <- Sys.time()
+                      print(paste0(timeStart, ": Start ", title))
+                      start_run(cfg,codeCheck=FALSE)
+
+                    } # close AF
+                  } # close TCCM
+               } # close CC
+             } # close TCC
            } # close if/else TC
 
 
