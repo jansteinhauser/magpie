@@ -33,7 +33,6 @@ cfg$output <- c("output_check", "rds_report")
 
 today <- format(Sys.Date(),format="%y%m%d")
 
-
 cfg$sequential <- FALSE
 
 cfg$force_replace <- TRUE
@@ -41,11 +40,12 @@ cfg$force_replace <- TRUE
 cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=NULL,
                                "./patch_input"=NULL),
                            getOption("magpie_repos"))
+
 cfg$input <- c(regional    = "rev4.73_h12_magpie.tgz",
-                cellular    = "rev4.73_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-                validation  = "rev4.73_h12_validation.tgz",
-                additional  = "additional_data_rev4.22.tgz",
-                calibration = "calibration_H12_per_ton_fao_may22_28May22.tgz",
+              cellular    = "rev4.73_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+              validation  = "rev4.73_h12_validation.tgz",
+              additional  = "additional_data_rev4.22.tgz",
+              calibration = "calibration_H12_per_ton_fao_may22_28May22.tgz",
                 patch = "patch.tgz")
 
 ### TC
@@ -77,7 +77,7 @@ GHG_v <- c(0)#,50,100,500)
 ###Biodiversity
 #cfg$gms$biodiversity <- "bv_btc_mar21"
 cfg$gms$biodiversity <- "bii_target"
-cfg$gms$s44_start_year <- 2020
+#cfg$gms$s44_start_year <- 2020
 #cfg$gms$s44_target_year <- 2050
 #cfg$gms$s44_start_price <- 0	#def = 0
 
@@ -90,12 +90,14 @@ TC_v <- c('en')
 TCC_v <-c('medium')
 AF_v <-c(1)
 ### Bioenergy
-BE_v <- c(6,7,8,9,10,15,30)
+BE_v <- c(6,7,8,9,10,15,30,60)
 ### Biodiversity
 BD_v <-c(0)#,70,74,76,78)
 PA_v <-c('npi')
 
 identifier_flag = "G"
+
+cfg$info$DevelopState <- "2022-06-15"
 
 for (BE in BE_v) {
 
