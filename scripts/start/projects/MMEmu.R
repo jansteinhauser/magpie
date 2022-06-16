@@ -32,7 +32,7 @@ cfg = setScenario(cfg,c(ssp)) #load config presets
 cfg$output <- c("output_check", "rds_report")
 
 today <- format(Sys.Date(),format="%y%m%d")
-identifier_flag = "G"
+
 
 cfg$sequential <- FALSE
 
@@ -41,15 +41,14 @@ cfg$force_replace <- TRUE
 cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=NULL,
                                "./patch_input"=NULL),
                            getOption("magpie_repos"))
-
- cfg$input <- c(regional    = "rev4.72_h12_magpie.tgz",
-                cellular    = "rev4.72_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-                validation  = "rev4.72_h12_validation.tgz",
-                additional  = "additional_data_rev4.21.tgz",
+cfg$input <- c(regional    = "rev4.73_h12_magpie.tgz",
+                cellular    = "rev4.73_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+                validation  = "rev4.73_h12_validation.tgz",
+                additional  = "additional_data_rev4.22.tgz",
                 calibration = "calibration_H12_per_ton_fao_may22_28May22.tgz",
                 patch = "patch.tgz")
 
-###TC
+### TC
 #cfg$gms$tc <- "endo_apr22"
 #cfg$gms$c13_tccost <- "medium"
 
@@ -65,14 +64,6 @@ cfg$gms$c60_1stgen_biodem <- "off"
 cfg$gms$c60_2ndgen_biodem <- "off"
 cfg$gms$c60_res_2ndgenBE_dem <- "off"
 
-TC_v <- c('en')
-TCC_v <-c('medium','high')
-AF_v <-c(1,0)
-
-BE_v <- c(60)#,6,7,8,9,10)
-
-
-
 ### Carbon price
 cfg$gms$ghg_policy <- "MMEmu_price_may22"
 cfg$gms$s56_ghgprice_start <- 2020
@@ -82,21 +73,29 @@ GHG_v <- c(0)#,50,100,500)
 #cfg$gms$crop <- "rotation_apr22"
 
 ### Protection
-PA_v <-c('npi')
-
 
 ###Biodiversity
-BD_v <-c(0,78)#,70,74,76,78)
-
 #cfg$gms$biodiversity <- "bv_btc_mar21"
 cfg$gms$biodiversity <- "bii_target"
-#cfg$gms$s44_start_year <- 2020
+cfg$gms$s44_start_year <- 2020
 #cfg$gms$s44_target_year <- 2050
-
 #cfg$gms$s44_start_price <- 0	#def = 0
 
 US00_05 <- 1.1197 #1.1197 #src: https://data.worldbank.org/indicator/NY.GDP.DEFL.ZS?end=2005&locations=US&start=2000
 
+##### Loop settings
+
+### TC
+TC_v <- c('en')
+TCC_v <-c('medium')
+AF_v <-c(1)
+### Bioenergy
+BE_v <- c(6,7,8,9,10,15,30)
+### Biodiversity
+BD_v <-c(0)#,70,74,76,78)
+PA_v <-c('npi')
+
+identifier_flag = "G"
 
 for (BE in BE_v) {
 
