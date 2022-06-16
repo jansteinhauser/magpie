@@ -89,7 +89,7 @@ US00_05 <- 1.1197 #1.1197 #src: https://data.worldbank.org/indicator/NY.GDP.DEFL
 TC_v <- c('en')
 TCC_v <-c('medium')
 CC_v <-c(1)
-AF_v <-c(0.01,0.02,0.04) #cfg$gms$s13_adj_factor
+AF_v <-c(0.01,0.02,0.04,0.1,0.5,1) #cfg$gms$s13_adj_factor
 TCCM_v <-c(0.002,0.0015,0.001) #cfg$gms$s13_max_gdp_shr
 
 ### Bioenergy
@@ -100,7 +100,7 @@ PA_v <-c('npi')
 
 identifier_flag = "G"
 
-cfg$info$flag <- "TC Adjustment factor & GDP share sensitivity"
+cfg$info$flag <- "TC Adjustment factor & GDP share sensitivity - 2"
 
 for (BE in BE_v) {
 
@@ -131,9 +131,9 @@ for (BE in BE_v) {
          for (TC in TC_v){
 
            TC_flag <- if (TC == 'en') "n" else 'x'
-           cfg$gms$tc <- if (TC == 'en') "endo_apr22" else 'exo'
 
            if (TC == 'ex'){
+             cfg$gms$tc < - 'exo'
              #Title and folder
              title <- paste0("E",str_pad(BE, 2, pad = "0"),"G",str_pad(GHG, 4, pad = "0"),BD_flag,PA_flag,TC_flag,identifier_flag)
              cfg$title <- title
@@ -144,6 +144,7 @@ for (BE in BE_v) {
              start_run(cfg,codeCheck=FALSE)
              }
            else{
+             cfg$gms$tc <- "endo_apr22"
              for (TCC in TCC_v){
 
                 cfg$gms$c13_tccost <- TCC
@@ -156,11 +157,11 @@ for (BE in BE_v) {
 
                     cfg$gms$s13_max_gdp_shr <- TCCM
 
-                    TCC_flag <- paste0(substr(TCC,1,1),as.character(TCCM*1000))
+                    TCC_flag <- paste0(substr(TCC,1,1),format(TCCM*1000,nsmall=1))
 
                     for (AF in AF_v){
 
-                      cfg$gms$cfg$gms$s13_adj_factor <- AF
+                      cfg$gms$s13_adj_factor <- AF
 
                       AF_flag <- if (CC == 1) paste0("A",as.character(AF*100)) else ""
 
