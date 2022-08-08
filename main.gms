@@ -146,26 +146,25 @@ $title magpie
 
 *##################### R SECTION START (VERSION INFO) ##########################
 *
-* Used data set: rev4.72_h12_magpie.tgz
+* Used data set: rev4.74_h12_magpie.tgz
 * md5sum: NA
-
-* Repository: https://rse.pik-potsdam.de/data/magpie/public
+* Repository: scp://cluster.pik-potsdam.de/p/projects/rd3mod/inputdata/output
 *
-* Used data set: rev4.72_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz
+* Used data set: rev4.73_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz
+* md5sum: NA
+* Repository: scp://cluster.pik-potsdam.de/p/projects/rd3mod/inputdata/output
+*
+* Used data set: rev4.73_h12_validation.tgz
+* md5sum: NA
+* Repository: scp://cluster.pik-potsdam.de/p/projects/rd3mod/inputdata/output
+*
+* Used data set: additional_data_rev4.26.tgz
 * md5sum: NA
 * Repository: https://rse.pik-potsdam.de/data/magpie/public
-*
-* Used data set: rev4.72_h12_validation.tgz
-* md5sum: NA
-* Repository: https://rse.pik-potsdam.de/data/magpie/public
-*
-* Used data set: additional_data_rev4.24.tgz
-* md5sum: b490a7c91c5d31881295efe8a7f3c5fb
-* Repository: /p/projects/landuse/data/input/archive
 *
 * Used data set: calibration_H12_per_ton_fao_may22_28May22.tgz
-* md5sum: NA
-* Repository: https://rse.pik-potsdam.de/data/magpie/public
+* md5sum: f6bf26be99c5dbd29e13a38af38c0d31
+* Repository: /p/projects/rd3mod/mirror/rse.pik-potsdam.de/data/magpie/public
 *
 * Low resolution: c200
 * High resolution: 0.5
@@ -178,11 +177,11 @@ $title magpie
 *
 * Regionscode: 62eff8f7
 *
-* Regions data revision: 4.72
+* Regions data revision: 4.75
 *
 * lpj2magpie settings:
 * * LPJmL data: MRI-ESM2-0:ssp370
-* * Revision: 4.72
+* * Revision: 4.73
 *
 * aggregation settings:
 * * Input resolution: 0.5
@@ -190,8 +189,10 @@ $title magpie
 * * Regionscode: 62eff8f7
 * * Call: withCallingHandlers(expr, message = messageHandler, warning = warningHandler,     error = errorHandler)
 *
+* Warning message:
+* package 'lucode2' was built under R version 4.2.1
 *
-* Last modification (input data): Mon Jun 13 17:36:51 2022
+* Last modification (input data): Tue Jul  5 14:20:37 2022
 *
 *###################### R SECTION END (VERSION INFO) ###########################
 
@@ -233,7 +234,7 @@ $setglobal interest_rate  select_apr20
 $setglobal tc  endo_apr22
 $setglobal yields  managementcalib_aug19
 
-$setglobal food  anthropometrics_jan18
+$setglobal food  anthro_iso_jun22
 $setglobal demand  sector_may15
 $setglobal production  flexreg_apr16
 
