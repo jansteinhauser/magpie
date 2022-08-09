@@ -83,6 +83,7 @@
                    items = scen56))
 
   gms::writeSets(sets, "modules/56_ghg_policy/price_jan20/sets.gms")
+  gms::writeSets(sets, "modules/56_ghg_policy/MMEmu_price_may22/sets.gms")
 
   ### 60_bioenergy
   scen2nd60 <- magclass::read.magpie("modules/60_bioenergy/input/f60_bioenergy_dem.cs3")
