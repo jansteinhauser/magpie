@@ -40,11 +40,11 @@ p30_avl_cropland(t,j) = f30_avl_cropland(j,"%c30_marginal_land%") *
 
 if(m_year(t) > s30_start_year,
 
-	p30_crop_upper = (1+s30_annual_max_growth) ** m_yeardiff(t)
+	p30_crop_upper = (1+s30_annual_max_growth) ** m_yeardiff(t);
 
-	v30_crop_area_glo.up = v30_crop_area_glo.l * p30_crop_upper
+	v30_crop_area_glo.up = v30_crop_area_glo.l * p30_crop_upper;
 
 	if(c30_growth_reg = 1,
-		v30_crop_area.up(i2) = v30_crop_area.l(i2) * p30_crop_upper
-		)
+		v30_crop_area.up(i2) = v30_crop_area.l(i2) * p30_crop_upper;
+		);
  );
