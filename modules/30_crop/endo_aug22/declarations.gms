@@ -11,6 +11,8 @@ parameters
  p30_country_dummy(iso)		        Dummy parameter indicating whether country is affected by selected SNV policy (1)
  i30_avl_cropland_iso(iso)			Available land area for cropland at ISO level (mio. ha)
  p30_crop_upper                 Maximum crop growth share (1)
+ p30_crop_area_glo              Last time step crop level (mio. Ha)
+ p30_crop_area(i)               Last time step regional crop level (mio. Ha)
 ;
 
 positive variables

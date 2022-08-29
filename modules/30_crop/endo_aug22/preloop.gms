@@ -20,3 +20,6 @@ p30_country_dummy(policy_countries30) = 1;
 * Countries are weighted by available cropland area.
 i30_avl_cropland_iso(iso) = f30_avl_cropland_iso(iso,"%c30_marginal_land%");
 p30_region_snv_shr(i) = sum(i_to_iso(i,iso), p30_country_dummy(iso) * i30_avl_cropland_iso(iso)) / sum(i_to_iso(i,iso), i30_avl_cropland_iso(iso));
+
+p30_crop_area(i) = 0;
+p30_crop_area_glo = 0;
