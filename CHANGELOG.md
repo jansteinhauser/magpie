@@ -9,24 +9,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### changed
+- **13_tc** relaxed vm_tau upper limit
+- **scripts** updated FSEC start and output scripts
+- **scripts** update of rds_report to allow gridded intermediate outputs
+- **config** non-food system emission MAGICC switch
 - **scripts** output/extra/disaggregation_BII.R adjusted BII output for primary and secondary other land
 - **59_som** Now calculates soil C for fallow
-- **inputs** updated non-food initial prices, MACCs curves, and removed suitability threshold of 0.1 in all_marginal setting  
+- **inputs** updated non-food initial prices, MACCs curves, and removed suitability threshold of 0.1 in all_marginal setting
 - **documentation** added literature
 - **scripts/start** cleanup of old start scripts
+- **scripts** log files are now written in a subfolder "logs"
 
 ### added
-- **scripts* added output scripts for FSEC FSDP runs
+- **scripts** added output script creating a merged .csv for dietaryIndicators and caloricSupply outputs
+- **scripts** added output script creating a set of outputs for Simon Dietz in the FSEC context
+- **scripts** added output script distributing Marco Springmann's health impacts into the respective output scenario report.mif, report.rds, and report_iso.rds
+- **scripts** added output script running MAGICC7 on a MAgPIE scenario
+- **scripts** added output script for gridded crop diversity indices
+- **scripts** added output scripts for FSEC FSDP runs
 - **15_food** added new realization with country level exogenous diets, product-specific intake estimates, new scenarios for exogenous BMI and decomposition switches for EAT Lancet diets. Simplified code and improved iteration procedure.
 - **57_maccs** added new Marginal Abatement Cost Curve (MACCs) data set from PBL (PBL2022)
 
 ### removed
 - **15_food** removed read-in of non-needed input file "f15_calib_factor_FAOfsupply_iso"
 
-
 ### fixed
 - **43_water_availability** added missing years after 2100 in "f43_wat_avail" to avoid infeasibilities in coupled runs with less_ts timesteps
-
+- **scripts** fixed some bugs related to background execution of start/output scripts
 
 
 ## [4.5.0] - 2022-07-07

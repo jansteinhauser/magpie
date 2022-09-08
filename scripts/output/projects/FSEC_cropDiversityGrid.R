@@ -6,17 +6,17 @@
 # |  Contact: magpie@pik-potsdam.de
 
 # --------------------------------------------------------------
-# description: Create FSEC environmental pollutants output dataset
+# description: Create FSEC Crop Diversity Map
 # comparison script: FALSE
 # ---------------------------------------------------------------
 
-# Version 1.00 - Michael Crawford
+# Version 1.00 - Patrick v. Jeetze
 # 1.00: first working version
 
 library(gms)
 library(magpie4)
 
-message("Starting FSEC nitrogen pollution output runscript")
+message("Starting FSEC gridded crop diversity output runscript")
 
 ############################# BASIC CONFIGURATION #######################################
 if (!exists("source_include")) {
@@ -34,9 +34,11 @@ message("Script started for output directory: ", outputdir)
 cfg <- gms::loadConfig(file.path(outputdir, "config.yml"))
 title <- cfg$title
 
-message("Generating nitrogen pollution output for the run: ", title)
+message("Generating crop diversity map for the run: ", title)
+gdx <- file.path(outputdir, "fulldata.gdx")
 
 # Grid-level nitrogen pollution
-out <- getReportFSECPollution(reportOutputDir = outputdir,
-                              magpieOutputDir = outputdir,
-                              scenario = title)
+out <- getReportFSECCropDiversityGrid(gdx = gdx,
+                                      reportOutputDir = outputdir,
+                                      magpieOutputDir = outputdir,
+                                      scenario = title)
