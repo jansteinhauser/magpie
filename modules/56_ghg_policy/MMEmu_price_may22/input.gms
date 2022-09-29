@@ -39,7 +39,7 @@ scalars
   s56_limit_ch4_n2o_price upper limit for CH4 and N2O GHG prices (USD05MER per tC) / 1000 /
   s56_cprice_red_factor reduction factor for CO2 price (-) / 1 /
   s56_ghgprice_target target 2100 ghg price / 559.85 /
-  s56_ghgprice_start start year for ghg price phase-in (year) / 2020 /
+  s56_ghgprice_start start year for ghg price phase-in (year) / 2025 /
   s56_ghgprice_phase_in  Switch for phasing-in GHG price over a 20 year period  (1=on 0=off) / 0 /
   s56_ghgprice_devstate_scaling Switch for scaling GHG price with development state (1=on 0=off) / 0 /
   s56_c_price_induced_aff Switch for C price driven afforestation (1=on 0=off) / 1 /
@@ -55,7 +55,7 @@ $setglobal c56_pollutant_prices_noselect  R21M42-SSP2-NPi
 $setglobal c56_emis_policy  redd+natveg_nosoil
 
 $setglobal c56_carbon_stock_pricing  actualNoAcEst
-*   options:  actual, actualNoAcEst, previousLandPattern, previousCarbonDensity
+*   options:  actual, actualNoAcEst
 
 table f56_pollutant_prices(t_all,i,pollutants,ghgscen56) GHG certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
 $ondelim

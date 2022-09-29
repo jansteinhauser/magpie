@@ -33,14 +33,16 @@ else
 );
 
 
-
 ***save im_pollutant_prices to parameter
 p56_pollutant_prices_input(t_all,i,pollutants,emis_source) = im_pollutant_prices(t_all,i,pollutants,emis_source);
 
 ***limit CH4 and N2O GHG prices based on s56_limit_ch4_n2o_price
-*im_pollutant_prices(t_all,i,"ch4",emis_source)$(im_pollutant_prices(t_all,i,"ch4",emis_source) > s56_limit_ch4_n2o_price*12/44*28) = s56_limit_ch4_n2o_price*12/44*28;
-*im_pollutant_prices(t_all,i,"n2o_n_direct",emis_source)$(im_pollutant_prices(t_all,i,"n2o_n_direct",emis_source) > s56_limit_ch4_n2o_price*12/44*265*44/28) = s56_limit_ch4_n2o_price*12/44*265*44/28;
-*im_pollutant_prices(t_all,i,"n2o_n_indirect",emis_source)$(im_pollutant_prices(t_all,i,"n2o_n_indirect",emis_source) > s56_limit_ch4_n2o_price*12/44*265*44/28) = s56_limit_ch4_n2o_price*12/44*265*44/28;
+*12/44 conversion from USD per tC to USD per tCO2
+*28 and 265 Global Warming Potentials from AR5 WG1 CH08 Table 8.7, conversion from USD per tCO2 to USD per tCH4 and USD per tN2O
+*44/28 conversion from USD per tN2O to USD per tN
+im_pollutant_prices(t_all,i,"ch4",emis_source)$(im_pollutant_prices(t_all,i,"ch4",emis_source) > s56_limit_ch4_n2o_price*12/44*28) = s56_limit_ch4_n2o_price*12/44*28;
+im_pollutant_prices(t_all,i,"n2o_n_direct",emis_source)$(im_pollutant_prices(t_all,i,"n2o_n_direct",emis_source) > s56_limit_ch4_n2o_price*12/44*265*44/28) = s56_limit_ch4_n2o_price*12/44*265*44/28;
+im_pollutant_prices(t_all,i,"n2o_n_indirect",emis_source)$(im_pollutant_prices(t_all,i,"n2o_n_indirect",emis_source) > s56_limit_ch4_n2o_price*12/44*265*44/28) = s56_limit_ch4_n2o_price*12/44*265*44/28;
 
 ***apply reduction factor on CO2 price to account for potential negative side effects
 ***lowers the economic incentive for CO2 emission reduction (avoided deforestation) and afforestation
@@ -52,16 +54,12 @@ im_pollutant_prices(t_all,i,pollutants,emis_source)$(s56_ghgprice_devstate_scali
 ***GHG emission policy
 im_pollutant_prices(t_all,i,pollutants,emis_source) = im_pollutant_prices(t_all,i,pollutants,emis_source) * f56_emis_policy("%c56_emis_policy%",pollutants,emis_source);
 
-
-
-
 ***construct age-class dependent C price for afforestation incentive
 ***this is needed because time steps (t) and age-classes (ac) can differ. ac and t_all are always in 5-year time steps.
 *For missing years in t_all use C price of previous time step. This step makes sure that C prices for every 5-year time step are available.
 loop(t_all$(m_year(t_all)>=s56_ghgprice_start),
 	im_pollutant_prices(t_all,i,"co2_c",emis_source)$(im_pollutant_prices(t_all,i,"co2_c",emis_source) = 0) = im_pollutant_prices(t_all-1,i,"co2_c",emis_source);
 );
-
 
 *Linear interpolation of C price for missing time steps
 loop(t,
@@ -77,8 +75,6 @@ loop(t,
     until s56_counter = s56_timesteps-1);
   );
 );
-display p56_pollutant_prices_input;
-display im_pollutant_prices;
 
 *initialize age-class dependent C price with same C price for all age-classes
 p56_c_price_aff(t_all,i,ac) = im_pollutant_prices(t_all,i,"co2_c","forestry_vegc");
@@ -90,5 +86,3 @@ ac_exp(ac)$(ac.off = s56_c_price_exp_aff/5) = yes;
 p56_c_price_aff(t_all,i,ac)$(ac.off >= s56_c_price_exp_aff/5) = sum(ac_exp, p56_c_price_aff(t_all,i,ac_exp));
 *zero C price before starting year
 p56_c_price_aff(t_all,i,ac)$(m_year(t_all)<s56_ghgprice_start) = 0;
-
-display p56_c_price_aff;
