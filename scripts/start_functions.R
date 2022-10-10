@@ -84,6 +84,7 @@
 
 
   gms::writeSets(sets, "modules/56_ghg_policy/MMEmu_priceExp_sep22/sets.gms")
+  gms::writeSets(sets, "modules/56_ghg_policy/MMEmu_priceDisc_oct22/sets.gms")
   gms::writeSets(sets, "modules/56_ghg_policy/MMEmu_price_may22/sets.gms")
   gms::writeSets(sets, "modules/56_ghg_policy/price_aug22/sets.gms")
 

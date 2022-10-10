@@ -24,6 +24,7 @@
 *' @authors Benjamin Bodirsky, Florian Humpenoeder
 
 *###################### R SECTION START (MODULETYPES) ##########################
+$Ifi "%ghg_policy%" == "MMEmu_priceDisc_oct22" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/realization.gms"
 $Ifi "%ghg_policy%" == "MMEmu_priceExp_sep22" $include "./modules/56_ghg_policy/MMEmu_priceExp_sep22/realization.gms"
 $Ifi "%ghg_policy%" == "MMEmu_price_may22" $include "./modules/56_ghg_policy/MMEmu_price_may22/realization.gms"
 $Ifi "%ghg_policy%" == "price_aug22" $include "./modules/56_ghg_policy/price_aug22/realization.gms"
