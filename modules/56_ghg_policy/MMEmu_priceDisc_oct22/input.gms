@@ -57,6 +57,8 @@ $setglobal c56_emis_policy  redd+natveg_nosoil
 
 $setglobal c56_carbon_stock_pricing  actualNoAcEst
 *   options:  actual, actualNoAcEst
+$setglobal c56_emis_cap Emu00
+
 
 table f56_pollutant_prices(t_all,i,pollutants,ghgscen56) GHG certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
 $ondelim
