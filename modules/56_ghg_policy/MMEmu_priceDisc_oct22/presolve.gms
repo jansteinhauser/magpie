@@ -7,7 +7,7 @@
 
 
 v56_emissions_taxed.up = Inf
-if ((m_year(t) > 1990) and (s56_emission_cap = 1),
+if ((m_year(t) > 1995) and (s56_emission_cap = 1),
     v56_emissions_taxed.up = sum((ct,i), p56_pollutant_cap(ct,i));
 );
 
