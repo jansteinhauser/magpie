@@ -87,4 +87,4 @@ p56_c_price_aff(t_all,i,ac)$(ac.off >= s56_c_price_exp_aff/5) = sum(ac_exp, p56_
 p56_c_price_aff(t_all,i,ac)$(m_year(t_all)<s56_ghgprice_start) = 0;
 
 * Pollutant caps
-p56_pollutant_cap(t_all,i) = f56_pollutant_cap(t_all,i,"%c56_emis_cap%");
+p56_pollutant_cap(t_all,i) = f56_pollutant_cap(t_all,i,"Emu00");
