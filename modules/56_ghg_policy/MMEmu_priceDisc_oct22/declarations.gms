@@ -39,7 +39,7 @@ variables
  v56_emission_cost(i,emis_source)          				 GHG emissions cost (mio. USD05MER per yr)
  vm_reward_cdr_aff(i)                                    Regional average annual expected revenue from afforestation (mio. USD05MER per yr)
  v56_reward_cdr_aff(j)				                     Cellular average annual expected revenue from afforestation (mio. USD05MER per yr)
- v56_emissions_taxed                                     Global emissions of taxed pollutants (CO2, N2O, CH4) {Mt CO2eq per year}
+ v56_emissions_taxed                                     Global emissions of taxed pollutants (CO2 N2O CH4) {Mt CO2eq per year}
 ;
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################

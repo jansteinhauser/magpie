@@ -84,7 +84,7 @@ $include "./modules/56_ghg_policy/input/f56_emis_policy.csv"
 $offdelim
 ;
 
-table f56_pollutant_cap(t_all,i,capscen56) Aggregated emission data for N2O, CH4, CO2 from previous run (Mt CO2e per t)
+table f56_pollutant_cap(t_all,i,capscen56) Aggregated emission data for N2O CH4 CO2 from previous run (Mt CO2e per t)
 $ondelim
 $include "./modules/56_ghg_policy/input/f56_pollutant_cap.cs3"
 $offdelim
