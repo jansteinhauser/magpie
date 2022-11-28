@@ -77,3 +77,11 @@
             	 (sum(aff_effect,(1-s56_buffer_aff)*vm_cdr_aff(j2,ac,aff_effect)) * sum((cell(i2,j2),ct), p56_c_price_aff(ct,i2,ac)))
             	 / ((1+sum((cell(i2,j2),ct),pm_interest(ct,i2)))**(ac.off*5)))
                  *sum((cell(i2,j2),ct),pm_interest(ct,i2)/(1+pm_interest(ct,i2)));
+
+*' Upper bound on global GHG emissions to ensure path-consistency between different GHG prices (i.e., avoid having a scenario 
+*' with higher GHG prices producing higher GHG emissions)
+
+ q56_global_emissions ..
+ 
+    v56_emissions_taxed =e=
+    sum((i, emis_source, pollutants_taxed),vm_emissions_reg(i,emis_source,pollutants_taxed))

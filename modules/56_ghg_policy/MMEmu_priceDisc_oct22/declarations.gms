@@ -23,6 +23,7 @@ equations
  q56_reward_cdr_aff(j)			                       	Cellular revenues for carbon captured by afforestation (mio. USD05MER per yr)
  q56_emis_pricing(i,pollutants,emis_source)		Calculation of annual CO2 emissions for pricing (Tg per yr)
  q56_emis_pricing_co2(i,emis_oneoff)	Calculation of annual CO2 emissions for pricing (Tg per yr)
+ q56_global_emissions                               Calculation of total global taxed pollutant emissions in CO2eq (Tg per year)
 ;
 
 positive variables
@@ -37,6 +38,7 @@ variables
  v56_emission_cost(i,emis_source)          				 GHG emissions cost (mio. USD05MER per yr)
  vm_reward_cdr_aff(i)                                    Regional average annual expected revenue from afforestation (mio. USD05MER per yr)
  v56_reward_cdr_aff(j)				                     Cellular average annual expected revenue from afforestation (mio. USD05MER per yr)
+ v56_emissions_taxed                                     Global emissions of taxed pollutants (CO2, N2O, CH4) {Mt CO2eq per year}
 ;
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################
@@ -48,6 +50,7 @@ parameters
  ov56_emission_cost(t,i,emis_source,type)           GHG emissions cost (mio. USD05MER per yr)
  ov_reward_cdr_aff(t,i,type)                        Regional average annual expected revenue from afforestation (mio. USD05MER per yr)
  ov56_reward_cdr_aff(t,j,type)                      Cellular average annual expected revenue from afforestation (mio. USD05MER per yr)
+ ov56_emissions_taxed(t,type)                       Global emissions of taxed pollutants (CO2 N2O CH4) {Mt CO2eq per year}
  oq56_emission_costs(t,i,type)                      Calculation of total emission costs (mio. USD05MER per yr)
  oq56_emission_cost_annual(t,i,emis_annual,type)    Calculation of regional costs for annual emissions (mio. USD05MER per yr)
  oq56_emission_cost_oneoff(t,i,emis_oneoff,type)    Calculation of regional costs for emissions occuring only once in time (mio. USD05MER per yr)
@@ -55,5 +58,6 @@ parameters
  oq56_reward_cdr_aff(t,j,type)                      Cellular revenues for carbon captured by afforestation (mio. USD05MER per yr)
  oq56_emis_pricing(t,i,pollutants,emis_source,type) Calculation of annual CO2 emissions for pricing (Tg per yr)
  oq56_emis_pricing_co2(t,i,emis_oneoff,type)        Calculation of annual CO2 emissions for pricing (Tg per yr)
+ oq56_global_emissions(t,type)                      Calculation of total global taxed pollutant emissions in CO2eq (Tg per year)
 ;
 *##################### R SECTION END (OUTPUT DECLARATIONS) #####################

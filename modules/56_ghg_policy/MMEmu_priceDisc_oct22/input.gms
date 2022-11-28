@@ -48,6 +48,7 @@ scalars
   s56_counter counter for C price interpolation (1) / 0 /
   s56_timesteps number of time steps for C price interpolation (1) / 0 /
   s56_offset helper for C price interpolation (1) / 0 /
+  s56_emission_cap switch for emission cap (1) / 0 / 
 ;
 
 $setglobal c56_pollutant_prices  R21M42-SSP2-NPi
@@ -80,5 +81,11 @@ $if "%c56_pollutant_prices%" == "emulator" ;
 table f56_emis_policy(scen56,pollutants_all,emis_source) GHG emission policy scenarios (1)
 $ondelim
 $include "./modules/56_ghg_policy/input/f56_emis_policy.csv"
+$offdelim
+;
+
+table f56_pollutant_cap(t_all,i,,capscen56) Aggregated emission data for N2O, CH4, CO2 from previous run (Mt CO2e per t)
+$ondelim
+$include "./modules/56_ghg_policy/input/f56_pollutant_cap.cs3"
 $offdelim
 ;
