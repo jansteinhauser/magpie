@@ -84,4 +84,9 @@
  q56_global_emissions ..
  
     v56_emissions_taxed =e=
-    sum((i, emis_source, pollutants_taxed),vm_emissions_reg(i,emis_source,pollutants_taxed));
+    sum((i, emis_source),
+        vm_emissions_reg(i,emis_source,"co2_c") *  44 / 12 +
+        vm_emissions_reg(i,emis_source,"ch4") *  28 +
+        (vm_emissions_reg(i,emis_source,"n2o_n_direct") + vm_emissions_reg(i,emis_source,"n2o_n_indirect")) * 44 / 28 * 265
+        );
+        

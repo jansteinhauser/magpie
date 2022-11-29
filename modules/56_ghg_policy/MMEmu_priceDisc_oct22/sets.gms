@@ -129,11 +129,6 @@ sets
    nh3_n, no2_n,
    no3_n /
    
-   pollutants_taxed(pollutants) subset of pollutants that are taxed
-   / co2_c,
-   ch4,
-   n2o_n_direct, n2o_n_indirect / 
-   
    n_pollutants(pollutants) subset of n pollutants
    / n2o_n_direct,n2o_n_indirect,
    nh3_n, no2_n,
