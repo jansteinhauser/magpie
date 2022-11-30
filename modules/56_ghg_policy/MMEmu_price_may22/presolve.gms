@@ -5,7 +5,9 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
-*** vm_emission_costs.scale(i) = 10e5;
-vm_emission_costs.scale(i) = 10e4;
-v56_emission_cost.scale(i,emis_source) = 10e4;
-vm_carbon_stock.scale(j,land,c_pools,stockType) = 10e3;
+
+v56_emissions_taxed.up = Inf
+if ((m_year(t) > 1995) and (s56_emission_cap = 1),
+    v56_emissions_taxed.up = sum((ct,i), p56_pollutant_cap(ct,i));
+);
+

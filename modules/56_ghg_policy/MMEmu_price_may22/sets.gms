@@ -149,4 +149,7 @@ sets
 
    stockType Carbon stock types
          / actual, actualNoAcEst /
+         
+   capscen56 emission cap scenarios
+        / Emu00, Emu03, Emu05, Emu08, Emu15, Emu30, Emu60 /
 ;

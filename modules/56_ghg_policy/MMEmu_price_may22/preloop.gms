@@ -18,20 +18,18 @@ v56_emis_pricing.fx(i,emis_oneoff,pollutants)$(not sameas(pollutants,"co2_c")) =
 
 loop(t_all,
  if(m_year(t_all) <= s56_ghgprice_start,
-    im_pollutant_prices(t_all,i,pollutants,emis_source) = 0;
+    p56_co2_price(t_all) = 0;
 elseif (m_year(t_all) >= 2100),
-    im_pollutant_prices(t_all,i,"co2_c",emis_source) = (44 / 12) * s56_ghgprice_target;
-    im_pollutant_prices(t_all,i,"ch4",emis_source) = 28 * s56_ghgprice_target;
-    im_pollutant_prices(t_all,i,"n2o_n_direct",emis_source) = 265 * (44 / 28) * s56_ghgprice_target;
-    im_pollutant_prices(t_all,i,"n2o_n_indirect",emis_source) = 265 * (44 / 28) * s56_ghgprice_target;
+    p56_co2_price(t_all) = s56_ghgprice_target;
 else
-    im_pollutant_prices(t_all,i,"co2_c",emis_source) = (44 / 12) * s56_ghgprice_target /(2100 - s56_ghgprice_start) * (m_year(t_all) - s56_ghgprice_start);
-    im_pollutant_prices(t_all,i,"ch4",emis_source) = 28 * s56_ghgprice_target /(2100 - s56_ghgprice_start) * (m_year(t_all) - s56_ghgprice_start);
-    im_pollutant_prices(t_all,i,"n2o_n_direct",emis_source) = 265 * (44 / 28) * s56_ghgprice_target /(2100 - s56_ghgprice_start) * (m_year(t_all) - s56_ghgprice_start);
-    im_pollutant_prices(t_all,i,"n2o_n_indirect",emis_source) = 265 * (44 / 28) * s56_ghgprice_target /(2100 - s56_ghgprice_start) * (m_year(t_all) - s56_ghgprice_start);
+    p56_co2_price(t_all) = s56_ghgprice_target / (2100 - s56_ghgprice_start) * (m_year(t_all) - s56_ghgprice_start);
  );
 );
-
+im_pollutant_prices(t_all,i,pollutants,emis_source) = 0;
+im_pollutant_prices(t_all,i,"co2_c",emis_source) = (44 / 12) * p56_co2_price(t_all);
+im_pollutant_prices(t_all,i,"ch4",emis_source) = 28 * p56_co2_price(t_all);
+im_pollutant_prices(t_all,i,"n2o_n_direct",emis_source) = 265 * (44 / 28) * p56_co2_price(t_all);
+im_pollutant_prices(t_all,i,"n2o_n_indirect",emis_source) = 265 * (44 / 28) * p56_co2_price(t_all);
 
 ***save im_pollutant_prices to parameter
 p56_pollutant_prices_input(t_all,i,pollutants,emis_source) = im_pollutant_prices(t_all,i,pollutants,emis_source);

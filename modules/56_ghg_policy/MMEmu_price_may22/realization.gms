@@ -30,5 +30,6 @@ $Ifi "%phase%" == "input" $include "./modules/56_ghg_policy/MMEmu_price_may22/in
 $Ifi "%phase%" == "equations" $include "./modules/56_ghg_policy/MMEmu_price_may22/equations.gms"
 $Ifi "%phase%" == "scaling" $include "./modules/56_ghg_policy/MMEmu_price_may22/scaling.gms"
 $Ifi "%phase%" == "preloop" $include "./modules/56_ghg_policy/MMEmu_price_may22/preloop.gms"
+$Ifi "%phase%" == "presolve" $include "./modules/56_ghg_policy/MMEmu_price_may22/presolve.gms"
 $Ifi "%phase%" == "postsolve" $include "./modules/56_ghg_policy/MMEmu_price_may22/postsolve.gms"
 *######################## R SECTION END (PHASES) ###############################
