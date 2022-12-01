@@ -5,7 +5,7 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
-if ((m_year(t) > 1995),
+if ((m_year(t) >=  s56_ghgprice_start),
     p56_emissions_taxed_cumulative = p56_emissions_taxed_cumulative + v56_emissions_taxed.l;
 );
 
