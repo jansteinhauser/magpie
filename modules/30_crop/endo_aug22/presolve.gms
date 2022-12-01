@@ -38,7 +38,7 @@ p30_avl_cropland(t,j) = f30_avl_cropland(j,"%c30_marginal_land%") *
 *' @stop
 
 
-if(m_year(t) > s30_start_year,
+if(m_year(t) >= s30_start_year,
 
 	p30_crop_upper = (1+s30_annual_max_growth) ** m_yeardiff(t);
 

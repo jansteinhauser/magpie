@@ -84,7 +84,7 @@ $if "%c30_rotation_constraints%" == "off" f30_rotation_min_shr(crp30) = 0;
 scalar
 s30_snv_shr   		Share of available cropland that is witheld for other land cover types (1) / 0 /
 s30_snv_shr_noselect 	Share of available cropland that is witheld for other land cover types (1) / 0 /
-s30_start_year  First reference year for cropland growth constraint / 2020 /
+s30_start_year  First year where cropland growth constraint is applied / 2025 /
 s30_annual_max_growth Max relative annual cropland growth / 0.1 /
 c30_growth_reg Switch between global (0) and regional (1) cropland growth constraint / 1 /
 ;
