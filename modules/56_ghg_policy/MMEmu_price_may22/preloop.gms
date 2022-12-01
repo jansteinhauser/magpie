@@ -85,5 +85,11 @@ p56_c_price_aff(t_all,i,ac)$(ac.off >= s56_c_price_exp_aff/5) = sum(ac_exp, p56_
 *zero C price before starting year
 p56_c_price_aff(t_all,i,ac)$(m_year(t_all)<s56_ghgprice_start) = 0;
 
-* Pollutant caps
-p56_pollutant_cap(t_all,i) = f56_pollutant_cap(t_all,i,"%c56_emis_cap%");
+* Pollutant caps, cumulative or not 
+p56_pollutant_cap(t_all,i) = 0;
+p56_pollutant_cap("y2020",i) = f56_pollutant_cap("y2020",i,"%c56_emis_cap%");
+loop(t,
+    p56_pollutant_cap(t,i) $ (m_year(t) > 2020) = f56_pollutant_cap(t,i,"%c56_emis_cap%") + (p56_pollutant_cap(t-1,i) * s56_cumulative_cap);
+);
+* Initialize CO2eq emissions counter
+p56_emissions_taxed_cumulative = 0;

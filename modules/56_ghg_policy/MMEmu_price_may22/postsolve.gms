@@ -5,6 +5,11 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
+if ((m_year(t) > 1995),
+    p56_emissions_taxed_cumulative = p56_emissions_taxed_cumulative + v56_emissions_taxed;
+);
+
+
 *#################### R SECTION START (OUTPUT DEFINITIONS) #####################
  ov_carbon_stock(t,j,land,c_pools,stockType,"marginal")   = vm_carbon_stock.m(j,land,c_pools,stockType);
  ov_emission_costs(t,i,"marginal")                        = vm_emission_costs.m(i);
