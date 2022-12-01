@@ -48,8 +48,8 @@ scalars
   s56_counter counter for C price interpolation (1) / 0 /
   s56_timesteps number of time steps for C price interpolation (1) / 0 /
   s56_offset helper for C price interpolation (1) / 0 /
-  s56_emission_cap switch for emission cap: on (1) or off (0) / 0 /
-  s56_cumulative_cap switch for non-cumulative (0) or cumulative (1) global emissions cap over time / 0 /
+  s56_emission_cap switch emission cap on (1) or off (0) / 0 /
+  s56_cumulative_cap switch for non-cumulative (0) or cumulative (1) global emissions cap / 0 /
 ;
 
 $setglobal c56_pollutant_prices  R21M42-SSP2-NPi
