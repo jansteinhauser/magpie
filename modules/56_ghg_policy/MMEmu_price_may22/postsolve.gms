@@ -6,7 +6,7 @@
 *** |  Contact: magpie@pik-potsdam.de
 
 if ((m_year(t) > 1995),
-    p56_emissions_taxed_cumulative = p56_emissions_taxed_cumulative + v56_emissions_taxed;
+    p56_emissions_taxed_cumulative = p56_emissions_taxed_cumulative + v56_emissions_taxed.l;
 );
 
 
