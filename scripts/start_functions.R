@@ -98,6 +98,7 @@
 
   gms::writeSets(sets , "modules/60_bioenergy/1stgen_priced_dec18/sets.gms")
   gms::writeSets(sets , "modules/60_bioenergy/2ndgen_linear_may22/sets.gms")
+  gms::writeSets(sets , "modules/60_bioenergy/2ndgen_linear_dec22/sets.gms")
 }
 
 # Function to extract information from info.txt
