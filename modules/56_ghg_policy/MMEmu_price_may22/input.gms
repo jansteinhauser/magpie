@@ -89,6 +89,10 @@ $offdelim
 
 table f56_pollutant_cap(t_all,i,capscen56) Aggregated emission data for N2O CH4 CO2 from previous run (Mt CO2e per t)
 $ondelim
-$include "./modules/56_ghg_policy/input/f56_%c56_gap_source%_pollutant_cap.cs3"
+$if "%c56_gap_source%" == "G0000" $include "./modules/56_ghg_policy/input/f56_G0000_pollutant_cap.cs3"
+$if "%c56_gap_source%" == "G0300" $include "./modules/56_ghg_policy/input/f56_G0300_pollutant_cap.cs3"
+$if "%c56_gap_source%" == "G0600" $include "./modules/56_ghg_policy/input/f56_G0600_pollutant_cap.cs3"
+$if "%c56_gap_source%" == "G1000" $include "./modules/56_ghg_policy/input/f56_G1000_pollutant_cap.cs3"
+$if "%c56_gap_source%" == "G1500" $include "./modules/56_ghg_policy/input/f56_G1500_pollutant_cap.cs3"
 $offdelim
 ;
