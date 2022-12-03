@@ -59,7 +59,7 @@ $setglobal c56_emis_policy  redd+natveg_nosoil
 $setglobal c56_carbon_stock_pricing  actualNoAcEst
 *   options:  actual, actualNoAcEst
 $setglobal c56_emis_cap Emu00
-
+$setglobal c56_gap_source G0000
 
 table f56_pollutant_prices(t_all,i,pollutants,ghgscen56) GHG certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
 $ondelim
@@ -89,6 +89,6 @@ $offdelim
 
 table f56_pollutant_cap(t_all,i,capscen56) Aggregated emission data for N2O CH4 CO2 from previous run (Mt CO2e per t)
 $ondelim
-$include "./modules/56_ghg_policy/input/f56_pollutant_cap.cs3"
+$include "./modules/56_ghg_policy/input/f56_%c56_gap_source%_pollutant_cap.cs3"
 $offdelim
 ;
