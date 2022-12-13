@@ -151,5 +151,5 @@ sets
          / actual, actualNoAcEst /
          
    capscen56 emission cap scenarios
-        / Emu00, Emu03, Emu05, Emu07, Emu08, Emu15, Emu30, Emu60 /
+        / Emu00, Emu05, Emu06, Emu08, Emu10, Emu15, Emu20, Emu30 /
 ;

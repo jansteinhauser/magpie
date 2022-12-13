@@ -87,9 +87,11 @@ p56_c_price_aff(t_all,i,ac)$(m_year(t_all)<s56_ghgprice_start) = 0;
 
 * Pollutant caps, cumulative or not 
 p56_pollutant_cap(t_all,i) = 0;
+p56_pollutant_cap_cum(t_all,i) = 0;
 loop(t,
-    p56_pollutant_cap(t,i) $ (m_year(t) = s56_ghgprice_start) = f56_pollutant_cap(t,i,"%c56_emis_cap%");
-    p56_pollutant_cap(t,i) $ (m_year(t) > s56_ghgprice_start) = f56_pollutant_cap(t,i,"%c56_emis_cap%") + (p56_pollutant_cap(t-1,i) * s56_cumulative_cap);
+    p56_pollutant_cap(t,i) $ (m_year(t) >= s56_ghgprice_start) = f56_pollutant_cap(t,i,"%c56_emis_cap%");
+    p56_pollutant_cap_cum(t,i) $ (m_year(t) = s56_ghgprice_start) = f56_pollutant_cap(t,i,"%c56_emis_cap%") * m_yeardiff(t);
+    p56_pollutant_cap_cum(t,i) $ (m_year(t) > s56_ghgprice_start) = f56_pollutant_cap(t,i,"%c56_emis_cap%") + (p56_pollutant_cap(t-1,i) * m_yeardiff(t));
 );
 * Initialize CO2eq emissions counter
-p56_emissions_taxed_cumulative = 0;
+p56_emissions_taxed_cumulative(i) = 0;

@@ -6,8 +6,11 @@
 *** |  Contact: magpie@pik-potsdam.de
 
 
-v56_emissions_taxed.up = Inf
+v56_emissions_taxed_reg(i).up = Inf
 if (((m_year(t) >= s56_ghgprice_start) and (s56_emission_cap = 1)),
-    v56_emissions_taxed.up = sum((ct,i), p56_pollutant_cap(ct,i)) - (p56_emissions_taxed_cumulative * s56_cumulative_cap);
+    v56_emissions_taxed_reg.up(i) $ (s56_cumulative_cap = 0) = 
+        sum(ct, p56_pollutant_cap(ct,i));
+    v56_emissions_taxed_reg.up(i) $ (s56_cumulative_cap = 1) = 
+        sum(ct, p56_pollutant_cap_cum(ct,i)) - p56_emissions_taxed_cumulative(i);
 );
 

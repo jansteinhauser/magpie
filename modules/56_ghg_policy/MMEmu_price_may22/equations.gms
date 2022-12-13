@@ -78,15 +78,18 @@
             	 / ((1+sum((cell(i2,j2),ct),pm_interest(ct,i2)))**(ac.off*5)))
                  *sum((cell(i2,j2),ct),pm_interest(ct,i2)/(1+pm_interest(ct,i2)));
 
-*' Upper bound on global GHG emissions to ensure path-consistency between different GHG prices (i.e., avoid having a scenario 
+*' Upper bound on regional GHG emissions to ensure path-consistency between different GHG prices (i.e., avoid having a scenario 
 *' with higher GHG prices producing higher GHG emissions)
 
- q56_global_emissions ..
- 
-    v56_emissions_taxed =e=
-    sum((i, emis_source),
-        vm_emissions_reg(i,emis_source,"co2_c") *  44 / 12 +
-        vm_emissions_reg(i,emis_source,"ch4") *  28 +
-        (vm_emissions_reg(i,emis_source,"n2o_n_direct") + vm_emissions_reg(i,emis_source,"n2o_n_indirect")) * 44 / 28 * 265
-        );
+ q56_regional_emissions(i2) ..
+                v56_emissions_taxed_reg(i2) =e=
+                sum(
+                    emis_source,
+                    vm_emissions_reg(i2,emis_source,"co2_c") *  44 / 12 +
+                    vm_emissions_reg(i2,emis_source,"ch4") *  28 +
+                    (
+                        vm_emissions_reg(i2,emis_source,"n2o_n_direct") +
+                        vm_emissions_reg(i2,emis_source,"n2o_n_indirect")
+                        ) * 44 / 28 * 265
+                    );
         
