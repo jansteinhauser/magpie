@@ -97,6 +97,7 @@ $if "%c56_cap_source%" == "G0500" $include "./modules/56_ghg_policy/input/f56_G0
 $if "%c56_cap_source%" == "G0600" $include "./modules/56_ghg_policy/input/f56_G0600_pollutant_cap.cs3"
 $if "%c56_cap_source%" == "G0800" $include "./modules/56_ghg_policy/input/f56_G0800_pollutant_cap.cs3"
 $if "%c56_cap_source%" == "G1000" $include "./modules/56_ghg_policy/input/f56_G1000_pollutant_cap.cs3"
+$if "%c56_cap_source%" == "G1200" $include "./modules/56_ghg_policy/input/f56_G1200_pollutant_cap.cs3"
 $if "%c56_cap_source%" == "G1500" $include "./modules/56_ghg_policy/input/f56_G1500_pollutant_cap.cs3"
 $offdelim
 ;
