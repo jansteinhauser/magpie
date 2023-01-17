@@ -16,12 +16,12 @@ scalars
 
 table fm_bii_coeff(bii_class44,potnatveg) Biodiversity Intactness Index coefficients (unitless)
 $ondelim
-$include "./modules/44_biodiversity/bii_target/input/f44_bii_coeff.cs3"
+$include "./modules/44_biodiversity/input/f44_bii_coeff.cs3"
 $offdelim
 ;
 
 table f44_biome(j,biome44) Share of biome type in each spatial unit (1)
 $ondelim
-$include "./modules/44_biodiversity/bii_target/input/biorealm_biome.cs3"
+$include "./modules/44_biodiversity/input/biorealm_biome.cs3"
 $offdelim
 ;
