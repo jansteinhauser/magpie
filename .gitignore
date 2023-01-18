@@ -36,3 +36,8 @@ Rplots.pdf
 #ignore GAMS license
 gamslice.txt
 .RData
+
+#ignore lock file
+/.lock
+
+/renv.lock
