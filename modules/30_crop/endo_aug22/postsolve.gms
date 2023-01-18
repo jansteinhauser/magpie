@@ -1,4 +1,4 @@
-*** |  (C) 2008-2021 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2023 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -23,6 +23,7 @@ p30_crop_area(i2) = v30_crop_area.l(i2);
  oq30_carbon(t,j,ag_pools,stockType,"marginal") = q30_carbon.m(j,ag_pools,stockType);
  oq30_bv_ann(t,j,potnatveg,"marginal")          = q30_bv_ann.m(j,potnatveg);
  oq30_bv_per(t,j,potnatveg,"marginal")          = q30_bv_per.m(j,potnatveg);
+ oq30_land_snv(t,j,"marginal")                  = q30_land_snv.m(j);
  oq30_crop_reg(t,i,"marginal")                  = q30_crop_reg.m(i);
  oq30_crop_glo(t,"marginal")                    = q30_crop_glo.m;
  ov_fallow(t,j,"level")                         = vm_fallow.l(j);
@@ -38,6 +39,7 @@ p30_crop_area(i2) = v30_crop_area.l(i2);
  oq30_carbon(t,j,ag_pools,stockType,"level")    = q30_carbon.l(j,ag_pools,stockType);
  oq30_bv_ann(t,j,potnatveg,"level")             = q30_bv_ann.l(j,potnatveg);
  oq30_bv_per(t,j,potnatveg,"level")             = q30_bv_per.l(j,potnatveg);
+ oq30_land_snv(t,j,"level")                     = q30_land_snv.l(j);
  oq30_crop_reg(t,i,"level")                     = q30_crop_reg.l(i);
  oq30_crop_glo(t,"level")                       = q30_crop_glo.l;
  ov_fallow(t,j,"upper")                         = vm_fallow.up(j);
@@ -53,6 +55,7 @@ p30_crop_area(i2) = v30_crop_area.l(i2);
  oq30_carbon(t,j,ag_pools,stockType,"upper")    = q30_carbon.up(j,ag_pools,stockType);
  oq30_bv_ann(t,j,potnatveg,"upper")             = q30_bv_ann.up(j,potnatveg);
  oq30_bv_per(t,j,potnatveg,"upper")             = q30_bv_per.up(j,potnatveg);
+ oq30_land_snv(t,j,"upper")                     = q30_land_snv.up(j);
  oq30_crop_reg(t,i,"upper")                     = q30_crop_reg.up(i);
  oq30_crop_glo(t,"upper")                       = q30_crop_glo.up;
  ov_fallow(t,j,"lower")                         = vm_fallow.lo(j);
@@ -68,6 +71,7 @@ p30_crop_area(i2) = v30_crop_area.l(i2);
  oq30_carbon(t,j,ag_pools,stockType,"lower")    = q30_carbon.lo(j,ag_pools,stockType);
  oq30_bv_ann(t,j,potnatveg,"lower")             = q30_bv_ann.lo(j,potnatveg);
  oq30_bv_per(t,j,potnatveg,"lower")             = q30_bv_per.lo(j,potnatveg);
+ oq30_land_snv(t,j,"lower")                     = q30_land_snv.lo(j);
  oq30_crop_reg(t,i,"lower")                     = q30_crop_reg.lo(i);
  oq30_crop_glo(t,"lower")                       = q30_crop_glo.lo;
 *##################### R SECTION END (OUTPUT DEFINITIONS) ######################
