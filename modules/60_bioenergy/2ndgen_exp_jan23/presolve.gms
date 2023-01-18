@@ -34,7 +34,7 @@ if(m_year(t) < c60_2ndgen_biosub_startyear,
     i60_2ndgen_bioenergy_subsidy(t) = 0;
     
 elseif (m_year(t) >= c60_2ndgen_biosub_startyear) and (m_year(t) < c60_2ndgen_biosub_endyear),
-     i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_biosub_startval * ((c60_2ndgen_biosub_endval/c60_2ndgen_biosub_startval) ** (1/(c60_2ndgen_biosub_endyear - c60_2ndgen_biosub_startyear)) ** (m_year(t) - c60_2ndgen_biosub_startyear)
+     i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_biosub_startval * ((c60_2ndgen_biosub_endval/c60_2ndgen_biosub_startval) ** (1/(c60_2ndgen_biosub_endyear - c60_2ndgen_biosub_startyear))) ** (m_year(t) - c60_2ndgen_biosub_startyear)
 
      
 else i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_biosub_endval
