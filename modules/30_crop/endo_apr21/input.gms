@@ -91,7 +91,11 @@ $if "%c30_rotation_constraints%" == "off" f30_rotation_min_shr(crp30) = 0;
 
 
 ********* AVAILABLE CROPLAND *******************************************
-
+scalars
+s30_start_year  First year where cropland growth constraint is applied / 2025 /
+s30_annual_max_growth Max relative annual cropland growth / 0.1 /
+c30_growth_reg Switch between global (0) and regional (1) cropland growth constraint / 1 /
+;
 
 table f30_avl_cropland(j,marginal_land30) Available land area for cropland (mio. ha)
 $ondelim
