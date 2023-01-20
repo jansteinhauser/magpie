@@ -24,12 +24,12 @@
 *' mitigation, total emission costs entering the objective function are zero.
 
 *####################### R SECTION START (PHASES) ##############################
-$Ifi "%phase%" == "sets" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/sets.gms"
-$Ifi "%phase%" == "declarations" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/declarations.gms"
-$Ifi "%phase%" == "input" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/input.gms"
-$Ifi "%phase%" == "equations" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/equations.gms"
-$Ifi "%phase%" == "scaling" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/scaling.gms"
-$Ifi "%phase%" == "preloop" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/preloop.gms"
-$Ifi "%phase%" == "presolve" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/presolve.gms"
-$Ifi "%phase%" == "postsolve" $include "./modules/56_ghg_policy/MMEmu_priceDisc_oct22/postsolve.gms"
+$Ifi "%phase%" == "sets" $include "./modules/56_ghg_policy/MMEmu_priceDisc_jan23/sets.gms"
+$Ifi "%phase%" == "declarations" $include "./modules/56_ghg_policy/MMEmu_priceDisc_jan23/declarations.gms"
+$Ifi "%phase%" == "input" $include "./modules/56_ghg_policy/MMEmu_priceDisc_jan23/input.gms"
+$Ifi "%phase%" == "equations" $include "./modules/56_ghg_policy/MMEmu_priceDisc_jan23/equations.gms"
+$Ifi "%phase%" == "scaling" $include "./modules/56_ghg_policy/MMEmu_priceDisc_jan23/scaling.gms"
+$Ifi "%phase%" == "preloop" $include "./modules/56_ghg_policy/MMEmu_priceDisc_jan23/preloop.gms"
+$Ifi "%phase%" == "presolve" $include "./modules/56_ghg_policy/MMEmu_priceDisc_jan23/presolve.gms"
+$Ifi "%phase%" == "postsolve" $include "./modules/56_ghg_policy/MMEmu_priceDisc_jan23/postsolve.gms"
 *######################## R SECTION END (PHASES) ###############################
