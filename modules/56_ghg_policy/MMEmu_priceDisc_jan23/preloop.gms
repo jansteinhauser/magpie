@@ -11,18 +11,18 @@ vm_carbon_stock.l(j,land,ag_pools,stockType) = fm_carbon_density("y1995",j,land,
 
 v56_emis_pricing.fx(i,emis_oneoff,pollutants)$(not sameas(pollutants,"co2_c")) = 0;
 
-**** Linearly implement pollution prices between s56_ghgprice_start and 2100
+**** Exponentially implement pollution prices between s56_ghgprice_start and 2100
 * 44/12 conversion from USD per tCO2 to USD per tC
 * 28 and 265 Global Warming Potentials from AR5 WG1 CH08 Table 8.7, conversion from USD per tCO2 to USD per tCH4 and USD per tN2O
 * 44/28 conversion from USD per tN2O to USD per tN
 
 loop(t_all,
- if(m_year(t_all) <= s56_ghgprice_start,
+ if(m_year(t_all) < s56_ghgprice_start,
     p56_co2_price(t_all) = 0;
 elseif (m_year(t_all) >= 2100),
-    p56_co2_price(t_all) = s56_ghgprice_target;
+    p56_co2_price(t_all) = s56_ghgprice_startprice * (1 + s56_ghgprice_discount / 100) ** (2100 - s56_ghgprice_start);
 else
-    p56_co2_price(t_all) = s56_ghgprice_target / (2100 - s56_ghgprice_start) * (m_year(t_all) - s56_ghgprice_start);
+    p56_co2_price(t_all) = s56_ghgprice_startprice * (1 + s56_ghgprice_discount / 100) ** (m_year(t_all) - s56_ghgprice_start);
  );
 );
 im_pollutant_prices(t_all,i,pollutants,emis_source) = 0;
@@ -85,14 +85,5 @@ p56_c_price_aff(t_all,i,ac)$(ac.off >= s56_c_price_exp_aff/5) = sum(ac_exp, p56_
 *zero C price before starting year
 p56_c_price_aff(t_all,i,ac)$(m_year(t_all)<s56_ghgprice_start) = 0;
 
-* Pollutant caps, cumulative or not 
-p56_pollutant_cap(t_all,i) = 0;
-p56_pollutant_cap_cum(t_all,i) = 0;
-loop(t $ (m_year(t) >= s56_ghgprice_start),
-    p56_pollutant_cap(t,i)  = f56_pollutant_cap(t,i,"%c56_emis_cap%");
-    p56_pollutant_cap_cum(t,i) = 
-        f56_pollutant_cap(t,i,"%c56_emis_cap%") * m_yeardiff(t) 
-        + p56_pollutant_cap_cum(t-1,i) $ (m_year(t) > s56_ghgprice_start);
-);
-* Initialize CO2eq emissions counter
-p56_emissions_taxed_cumulative(i) = 0;
+* Pollutant caps
+p56_pollutant_cap(t_all,i) = f56_pollutant_cap(t_all,i,"%c56_emis_cap%");
