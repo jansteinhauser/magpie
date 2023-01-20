@@ -36,7 +36,7 @@ sets
 ;
 
 scalars
-  s56_limit_ch4_n2o_price upper limit for CH4 and N2O GHG prices (USD05MER per tC) / 1000 /
+  s56_limit_ch4_n2o_price upper limit for CH4 and N2O GHG prices (USD05MER per tC) / 4000 /
   s56_cprice_red_factor reduction factor for CO2 price (-) / 1 /
   s56_ghgprice_target target 2100 ghg price / 559.85 /
   s56_ghgprice_start start year for ghg price phase-in (year) / 2025 /

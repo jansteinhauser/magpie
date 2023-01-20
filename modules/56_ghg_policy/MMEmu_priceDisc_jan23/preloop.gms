@@ -19,10 +19,10 @@ v56_emis_pricing.fx(i,emis_oneoff,pollutants)$(not sameas(pollutants,"co2_c")) =
 loop(t_all,
  if(m_year(t_all) < s56_ghgprice_start,
     p56_co2_price(t_all) = 0;
-elseif (m_year(t_all) >= 2100),
-    p56_co2_price(t_all) = s56_ghgprice_startprice * (1 + s56_ghgprice_discount / 100) ** (2100 - s56_ghgprice_start);
+elseif (m_year(t_all) >= s56_ghgprice_end),
+    p56_co2_price(t_all) = s56_ghgprice_endprice;
 else
-    p56_co2_price(t_all) = s56_ghgprice_startprice * (1 + s56_ghgprice_discount / 100) ** (m_year(t_all) - s56_ghgprice_start);
+    p56_co2_price(t_all) = s56_ghgprice_startprice * ((s56_ghgprice_endprice / s56_ghgprice_startprice) ** (1 / (s56_ghgprice_end - s56_ghgprice_start))) **  (m_year(t_all) - s56_ghgprice_start);
  );
 );
 im_pollutant_prices(t_all,i,pollutants,emis_source) = 0;
