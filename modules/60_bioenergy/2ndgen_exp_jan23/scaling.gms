@@ -5,14 +5,6 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
-table f10_land(t_ini10,j,land) Different land type areas (mio. ha)
-$ondelim
-$include "./modules/10_land/input/avl_land_t.cs3"
-$offdelim
-;
-
-table fm_luh2_side_layers(j,luh2_side_layers10) luh2 side layers (grid cell share)
-$ondelim
-$include "./modules/10_land/input/luh2_side_layers.cs3"
-$offdelim
-;
+*** vm_bioenergy_utility.scale(i) = 10e4;
+vm_bioenergy_utility.scale(i) = 10e3;
+v60_2ndgen_bioenergy_dem_dedicated.scale(i,kall) = 10e3;
