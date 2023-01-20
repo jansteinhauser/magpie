@@ -22,7 +22,7 @@ loop(t_all,
 elseif (m_year(t_all) >= s56_ghgprice_end),
     p56_co2_price(t_all) = s56_ghgprice_endprice;
 else
-    p56_co2_price(t_all) = s56_ghgprice_startprice * ((s56_ghgprice_endprice / s56_ghgprice_startprice) ** (1 / (s56_ghgprice_end - s56_ghgprice_start))) **  (m_year(t_all) - s56_ghgprice_start);
+    p56_co2_price(t_all) = s56_ghgprice_startprice * ((s56_ghgprice_endprice / (s56_ghgprice_startprice + 1 $ (s56_ghgprice_startprice = 0))) ** (1 / (s56_ghgprice_end - s56_ghgprice_start))) **  (m_year(t_all) - s56_ghgprice_start);
  );
 );
 im_pollutant_prices(t_all,i,pollutants,emis_source) = 0;
