@@ -12,6 +12,6 @@ if (((m_year(t) >= s56_ghgprice_start) and (s56_emission_cap = 1)),
         sum(ct, p56_pollutant_cap(ct,i));
     v56_emissions_taxed_reg.up(i) $ (s56_cumulative_cap = 1) = 
         sum(ct, p56_pollutant_cap_cum(ct,i)) - p56_emissions_taxed_cumulative(i);    
-    v56_emissions_taxed_reg.l(0) = 0;
+    v56_emissions_taxed_reg.l(i) = 0;
 );
 
