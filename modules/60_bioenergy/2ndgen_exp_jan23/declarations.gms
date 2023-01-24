@@ -10,7 +10,8 @@ parameters
  i60_bioenergy_dem(t,i)                           Regional bioenergy demand per year (mio. GJ per yr)
  i60_res_2ndgenBE_dem(t,i)                        Regional residue demand for 2nd generation bioenergy per year (mio. GJ per yr)
  i60_1stgen_bioenergy_dem(t,i,kall)               Regional 1st generation bioenergy demand (mio. GJ per yr)
- i60_2ndgen_bioenergy_subsidy(t)                  Bioenergy subsidy per year (USD05MER per GJ)
+ i60_1stgen_bioenergy_subsidy(ct)                 1st Gen Bioenergy subsidy per year (USD05MER per GJ)
+ i60_2ndgen_bioenergy_subsidy(t)                  2nd Gen Bioenergy subsidy per year (USD05MER per GJ)
  p60_region_BE_shr(t_all,i)	                      Bioenergy demand share of the region (1)
  p60_country_dummy(iso)		                        Dummy parameter indicating whether country is selected for selected bioenergy demand scenario (1)
 ;
@@ -19,6 +20,7 @@ positive variables
  vm_dem_bioen(i,kall)                       Regional bioenergy demand  (mio. tDM per yr)
  v60_2ndgen_bioenergy_dem_dedicated(i,kall) Bioenergy demand which can come from different regions (mio. GJ per yr)
  v60_2ndgen_bioenergy_dem_residues(i,kall)  Bioenergy demand which can come from different product types (mio. GJ per yr)
+ v60_prod_bioen(i,kall)                     Regional bioenergy demand  (mio. GJ per yr)
 ;
 
 variables
@@ -31,6 +33,7 @@ equations
  q60_bioenergy_reg(i)                      Regional 2nd generation dedicated bioenergy demand (mio. GJ per yr)
  q60_res_2ndgenBE(i)                       Regional residue demand for 2nd generation bioenergy (mio. GJ per yr)
  q60_bioenergy_incentive(i)                Incentive to produce bioenergy (mio. USD05MER per yr)
+ q60_biomar(i,kall)                        Global total bioenergy demand (mio. GJ per yr) 
 ;
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################

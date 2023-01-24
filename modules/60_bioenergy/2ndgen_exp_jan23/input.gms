@@ -36,10 +36,12 @@ sets
 scalars
   c60_biodem_level  bioenergy demand level indicator 1 for regional and 0 for global demand   (1)   / 1 /
   c60_bioenergy_subsidy first generation bioenergy subsidy (USD05MER per ton) / 300 /
-  c60_2ndgen_biosub_startyear start year for implementation of second generation bioenergy subsidy / 2025 / 
-  c60_2ndgen_biosub_endyear   end year for implementation of second generation bioenergy subsidy / 2100 /
+  c60_biosub_startyear        start year for implementation of bioenergy subsidy / 2025 / 
+  c60_biosub_endyear          end year for implementation of bioenergy subsidy / 2100 /
   c60_2ndgen_biosub_startval  second generation bioenergy subsidy at start (USD05MER per GJ) / 0 /
   c60_2ndgen_biosub_endval    second generation bioenergy subsidy by end year(USD05MER per GJ) / 0 /
+  c60_1stgen_biosub_startval  first generation bioenergy subsidy at start (USD05MER per GJ) / 0 /
+  c60_1stgen_biosub_endval    first generation bioenergy subsidy by end year (USD05MER per GJ) / 0 /
   s60_2ndgen_bioenergy_dem_min Minimum dedicated 2nd generation bioenergy demand assumed in each region (mio. GJ per yr) / 1 /
 ;
 

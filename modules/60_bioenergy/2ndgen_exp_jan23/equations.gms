@@ -23,6 +23,11 @@ q60_bioenergy(i2,kall) ..
       v60_2ndgen_bioenergy_dem_residues(i2,kall)
       ;
 
+q60_biomar(i2,kall) ..
+    v60_prod_bioen(i2,kall) =e=
+    vm_dem_bioen(i2,kall) * fm_attributes("ge",kall)
+    ;
+
 *' The used first generation bioenergy trajectory contains demand until 2050
 *' based on currently established and planned bioenergy policies
 *' (@lotze-campen_impacts_2014). For the time
@@ -72,5 +77,7 @@ q60_res_2ndgenBE(i2) ..
 *' overproduction from couple products.
 
 q60_bioenergy_incentive(i2).. vm_bioenergy_utility(i2)
-          =e= sum(k1st60, vm_dem_bioen(i2,k1st60) * (-c60_bioenergy_subsidy))
-          + sum((kbe60,ct), vm_dem_bioen(i2,kbe60)* fm_attributes("ge",kbe60) * (-i60_2ndgen_bioenergy_subsidy(ct)));
+          =e= sum(ct, 
+          sum(k1st60, vm_dem_bioen(i2,k1st60) * fm_attributes("ge",k1st60) * (-i60_1stgen_bioenergy_subsidy(ct)))
+          + sum((kbe60,ct), vm_dem_bioen(i2,kbe60) * fm_attributes("ge",kbe60) * (-i60_2ndgen_bioenergy_subsidy(ct)))
+          );

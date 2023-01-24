@@ -30,13 +30,17 @@ else
 i60_bioenergy_dem(t,i)$(i60_bioenergy_dem(t,i) < s60_2ndgen_bioenergy_dem_min) = s60_2ndgen_bioenergy_dem_min;
 
 * implement the 2nd gen bioenergy subsidy between defined start and end year, constant on end level after
-if(m_year(t) < c60_2ndgen_biosub_startyear,
+if(m_year(t) < c60_biosub_startyear,
     i60_2ndgen_bioenergy_subsidy(t) = 0;
+    i60_1stgen_bioenergy_subsidy(t) = 0;
     
-elseif (m_year(t) >= c60_2ndgen_biosub_startyear) and (m_year(t) < c60_2ndgen_biosub_endyear),
-     i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_biosub_startval * ((c60_2ndgen_biosub_endval / (c60_2ndgen_biosub_startval + 1 $ (c60_2ndgen_biosub_startval = 0) )) ** (1 / (c60_2ndgen_biosub_endyear - c60_2ndgen_biosub_startyear))) ** (m_year(t) - c60_2ndgen_biosub_startyear);
+elseif (m_year(t) >= c60_biosub_startyear) and (m_year(t) < c60_biosub_endyear),
+     i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_biosub_startval * ((c60_2ndgen_biosub_endval / (c60_2ndgen_biosub_startval + 1 $ (c60_2ndgen_biosub_startval = 0) )) ** (1 / (c60_biosub_endyear - c60_biosub_startyear))) ** (m_year(t) - c60_biosub_startyear);
+     i60_1stgen_bioenergy_subsidy(t) = c60_1stgen_biosub_startval * ((c60_1stgen_biosub_endval / (c60_1stgen_biosub_startval + 1 $ (c60_1stgen_biosub_startval = 0) )) ** (1 / (c60_biosub_endyear - c60_biosub_startyear))) ** (m_year(t) - c60_biosub_startyear);
    
-else i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_biosub_endval
+else 
+    i60_2ndgen_bioenergy_subsidy(t) = c60_2ndgen_biosub_endval;
+    i60_1stgen_bioenergy_subsidy(t) = c60_1stgen_biosub_endval;
 );
 
 
