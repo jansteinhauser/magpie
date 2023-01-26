@@ -49,7 +49,8 @@ scalars
   s56_counter counter for C price interpolation (1) / 0 /
   s56_timesteps number of time steps for C price interpolation (1) / 0 /
   s56_offset helper for C price interpolation (1) / 0 /
-  s56_emission_cap switch for emission cap: on (1) or off (0) / 0 / 
+  s56_emission_cap switch for emission cap: on (1) or off (0) / 0 /
+  c56_ghgprice_linexp switch for linear (0) or exponential (1) implementation of carbon price / 0 /  
 ;
 
 $setglobal c56_pollutant_prices  R21M42-SSP2-NPi
