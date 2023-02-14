@@ -90,6 +90,7 @@ for (be in beV){
 
         ##############################################
         runflag <- "demand"
+
         cfg$title <- paste0("E", str_pad(be, 2, pad = "0"), "G", str_pad(g, 4, pad = "0"), runflag)
 
         start_run(cfg, codeCheck = FALSE)
