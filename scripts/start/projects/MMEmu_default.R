@@ -26,6 +26,12 @@ source("config/default.cfg") #nolinter
 
 cfg$qos <- "priority"
 
+cfg$input <- c(regional    = "rev4.85_a10a580c_magpie.tgz",
+               cellular    = "rev4.85_a10a580c_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.85_a10a580c_validation.tgz",
+               additional  = "additional_data_rev4.43.tgz"
+            )
+
 cfg$output <- c("output_check", "rds_report")
 cfg$force_replace <- TRUE
 
