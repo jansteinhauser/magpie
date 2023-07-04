@@ -30,12 +30,12 @@ cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public" 
                                "./patch_input" = NULL),
                            getOption("magpie_repos"))
 
-cfg$input <- c(regional    = "rev4.87_h12_magpie.tgz",
-               cellular    = "rev4.87_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.87_h12_validation.tgz",
+cfg$input <- c(regional    = "rev4.87_a10a580c_magpie.tgz",
+               cellular    = "rev4.87_a10a580c_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.87_a10a580c_validation.tgz",
                additional  = "additional_data_rev4.43.tgz",
                patch = "MMEmuR11_rev4.87.tgz"
-		)
+               )
 
 cfg$output <- c("output_check", "rds_report")
 cfg$force_replace <- TRUE
